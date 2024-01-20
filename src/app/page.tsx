@@ -1,3 +1,6 @@
+import { TodoItem } from '@components'
+
+// Server Actions
 import { getTodoList } from '@services/todo'
 
 export const Home = async () => {
@@ -26,13 +29,7 @@ export const Home = async () => {
 
         <div className="mt-5">
           {todos.map((todo) => (
-            <div
-              key={todo.id}
-              className="flex items-center justify-between gap-3 border-b border-black/10 py-3"
-            >
-              <p className="text-xl">{todo.title}</p>
-              <input type="checkbox" />
-            </div>
+            <TodoItem key={todo.id} data={todo} />
           ))}
         </div>
       </div>
