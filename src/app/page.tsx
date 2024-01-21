@@ -7,7 +7,7 @@ import { Button, TodoList } from '@components'
 // Types
 import { PageProps } from '../../.next/types/app/page'
 
-export const Home: NextPage<PageProps> = async ({ searchParams }) => {
+const Home: NextPage<PageProps> = async ({ searchParams }) => {
   return (
     <div>
       <h1 className="text-3xl font-semibold text-center">Todo App</h1>
