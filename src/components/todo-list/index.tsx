@@ -1,5 +1,5 @@
 // Components
-import { TodoItem } from '@components'
+import { SearchTodoForm, TodoItem } from '@components'
 
 // Server Actions
 import { getTodoList } from '@services/todo'
@@ -9,22 +9,17 @@ import type { FC } from 'react'
 
 interface TodoListProps {
   containerStyle?: string
+  q?: string
 }
 
 export const TodoList: FC<TodoListProps> = async (props) => {
-  const todos = await getTodoList()
+  const { containerStyle, q = '' } = props
 
-  const { containerStyle } = props
+  const todos = await getTodoList({ q })
 
   return (
     <div className={containerStyle}>
-      <div className="flex flex-col gap-3">
-        <input
-          type="text"
-          placeholder="Search your task"
-          className="border-black/40 border rounded-md p-2 outline-none"
-        />
-      </div>
+      <SearchTodoForm />
 
       <div className="mt-5 border-b border-dashed border-black/10"></div>
 

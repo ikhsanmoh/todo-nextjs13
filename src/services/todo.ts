@@ -3,8 +3,18 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import db from '@utils/db'
 
-export const getTodoList = async () => {
-  const todos = await db.todo.findMany()
+export const getTodoList = async (params?: { q: string }) => {
+  const todos = await db.todo.findMany({
+    where: {
+      title: {
+        contains: params?.q,
+      },
+    },
+  })
+
+  if (!!params?.q) {
+    revalidatePath('/')
+  }
 
   return todos
 }

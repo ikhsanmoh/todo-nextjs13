@@ -1,9 +1,13 @@
+import { NextPage } from 'next'
 import Link from 'next/link'
 
 // Components
 import { Button, TodoList } from '@components'
 
-export const Home = async () => {
+// Types
+import { PageProps } from '../../.next/types/app/page'
+
+export const Home: NextPage<PageProps> = async ({ searchParams }) => {
   return (
     <div>
       <h1 className="text-3xl font-semibold text-center">Todo App</h1>
@@ -15,7 +19,7 @@ export const Home = async () => {
         </Link>
       </div>
 
-      <TodoList containerStyle="mt-3" />
+      <TodoList containerStyle="mt-3" q={searchParams?.q} />
     </div>
   )
 }
