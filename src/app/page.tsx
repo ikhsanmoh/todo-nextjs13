@@ -1,13 +1,21 @@
+import Link from 'next/link'
+
 // Components
-import { TodoList } from '@components'
+import { Button, TodoList } from '@components'
 
 export const Home = async () => {
   return (
-    <div className="p-5">
+    <div>
       <h1 className="text-3xl font-semibold text-center">Todo App</h1>
       <p className="text-center">A simple todo app</p>
 
-      <TodoList containerStyle="mt-5" />
+      <div className="flex flex-col mt-5">
+        <Link href="/create">
+          <Button label="Create Task" />
+        </Link>
+      </div>
+
+      <TodoList containerStyle="mt-3" />
     </div>
   )
 }
